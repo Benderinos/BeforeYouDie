@@ -20,7 +20,7 @@ abstract class RepositoryModule {
     /**
      * Create a provider method for [FirebaseDatabase].
      *
-     * @return Instance of theme utils.
+     * @return Instance of firebase database
      * @see Binds
      */
     @AppScope
@@ -34,13 +34,13 @@ abstract class RepositoryModule {
     /**
      * Create a provider method for user [DatabaseReference].
      *
-     * @return Instance of theme utils.
+     * @return Instance of user database reference
      * @see Binds
      */
     @AppScope
     @Provides
     fun getUserDatabaseReference(firebaseDatabase: FirebaseDatabase, user: UserResponse): DatabaseReference {
-        val databaseReference = firebaseDatabase.getReference("postsByUser").child(user.id!!)
+        val databaseReference = firebaseDatabase.getReference("users").child(user.id!!)
         databaseReference.keepSynced(true) // keep data synced
         return databaseReference
     }
