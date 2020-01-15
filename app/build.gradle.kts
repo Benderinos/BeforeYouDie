@@ -70,6 +70,9 @@ android {
         }
     }
 
+    dynamicFeatures = mutableSetOf(
+        BuildModules.Features.SPLASH)
+
     buildFeatures{
         dataBinding = true
     }

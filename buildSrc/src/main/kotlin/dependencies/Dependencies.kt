@@ -33,4 +33,12 @@ object Dependencies {
     const val CRASHLYTICS = "com.crashlytics.sdk.android:crashlytics:${BuildDependenciesVersions.CRASHLYTICS}"
     const val PLAY_CORE = "com.google.android.play:core:${BuildDependenciesVersions.PLAY_CORE}"
     const val FIREBASE_ANALYTICS = "com.google.firebase:firebase-analytics:${BuildDependenciesVersions.FIREBASE_ANALYTICS}"
+    const val FIREBASE_AUTH_UI = "com.firebaseui:firebase-ui-auth:${BuildDependenciesVersions.FIREBASE_AUTH_UI}"
+    const val FIREBASE_AUTH_PLAY_SERVICES = "com.google.android.gms:play-services-auth:${BuildDependenciesVersions.FIREBASE_AUTH_PLAY_SERVICES}"
+    const val FIREBASE_AUTH = "com.google.firebase:firebase-auth:${BuildDependenciesVersions.FIREBASE_AUTH}"
+    const val FIREBASE_DATABASE = "com.google.firebase:firebase-database:${BuildDependenciesVersions.FIREBASE_DATABASE}"
+    const val FIREBASE_STORAGE = "com.google.firebase:firebase-storage:${BuildDependenciesVersions.FIREBASE_STORAGE}"
+    const val FIREBASE_ANALIYTICS = "com.google.firebase:firebase-analytics:${BuildDependenciesVersions.FIREBASE_ANALYTICS}"
+    const val FIREBASE_CORE = "com.google.firebase:firebase-core:${BuildDependenciesVersions.FIREBASE_CORE}"
+    const val LOTTIE = "com.airbnb.android:lottie:${BuildDependenciesVersions.LOTTIE}"
 }

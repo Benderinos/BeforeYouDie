@@ -6,6 +6,8 @@ object BuildModules {
     const val CORE = ":core"
 
     object Features {
+        const val SPLASH = ":features:splash"
+        const val LOGIN = ":features:login"
         const val HOME = ":features:home"
     }
 

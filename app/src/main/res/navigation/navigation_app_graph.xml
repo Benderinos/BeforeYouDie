@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:startDestination="@id/home_fragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/splash_fragment">
+    <fragment
+        android:id="@+id/splash_fragment"
+        android:name="es.littledavity.dynamicfeatures.splash.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_login_fragment"
+            app:destination="@+id/login_fragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_home_fragment"
+            app:destination="@+id/home_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/login_fragment"
+        android:name="es.littledavity.dynamicfeatures.splash.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash">
+
+    </fragment>
+
     <fragment
         android:id="@+id/home_fragment"
-        android:label="HomeFragment">
-    </fragment>
-<!--    android:name="es.littledavity.dynamicfeatures.home.ui.HomeFragment"-->
+        android:name="es.littledavity.dynamicfeatures.splash.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash"/>
 
 </navigation>
