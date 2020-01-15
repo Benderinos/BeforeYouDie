@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "228690271012",
+    "firebase_url": "https://beforeyoudie-id.firebaseio.com",
+    "project_id": "beforeyoudie-id",
+    "storage_bucket": "beforeyoudie-id.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:228690271012:android:aede17c5bfb6cff6d831b1",
+        "android_client_info": {
+          "package_name": "es.littledavity.beforeyoudie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "228690271012-4oqu2i8l28vdpahd8gj0j46tvalavg3q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAShDjdMwvbDiWm9SDoUxKMZ-ajZyl-4Jo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "228690271012-4oqu2i8l28vdpahd8gj0j46tvalavg3q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
