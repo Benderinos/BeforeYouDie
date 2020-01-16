@@ -30,6 +30,10 @@ class SplashFragment : BaseFragment<FragmentSplashBinding, SplashViewModel>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observe(viewModel.state, ::onViewStateChange)
+        viewBinding.lottieSplash.setOnClickListener {
+            viewModel.checkUserLogin()
+            viewBinding.lottieSplash.animate()
+        }
     }
 
     /**

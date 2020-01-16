@@ -33,7 +33,7 @@ class SplashViewModel @Inject constructor(
         checkUserLogin()
     }
 
-    private fun checkUserLogin() {
+    fun checkUserLogin() {
         viewModelScope.launch {
             userRepository.checkUserLogin()
                 .onStart { _state.postValue(SplashViewState.Loading) }
