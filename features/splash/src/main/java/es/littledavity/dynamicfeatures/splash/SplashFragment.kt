@@ -54,10 +54,10 @@ class SplashFragment : BaseFragment<FragmentSplashBinding, SplashViewModel>(
     /**
      * Observer view state change on [SplashViewState].
      *
-     * @param viewState State of character detail.
+     * @param viewState State of splash fragment.
      */
     private fun onViewStateChange(viewState: SplashViewState) {
-        when (viewState) {
+        /*when (viewState) {
             is SplashViewState.Loading ->
                 //Show Lottie loading
                 findNavController().navigate(R.id.action_splashFragment_to_home_fragment)
@@ -67,7 +67,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding, SplashViewModel>(
                 findNavController().navigate(R.id.action_splashFragment_to_login_fragment)
             is SplashViewState.Error ->
                 findNavController().navigate(R.id.action_splashFragment_to_login_fragment)
-        }
+        }*/
     }
 
 }

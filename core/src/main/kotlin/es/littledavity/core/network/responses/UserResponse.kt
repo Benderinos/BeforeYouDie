@@ -14,7 +14,7 @@ import es.littledavity.core.annotations.OpenForTesting
  */
 @OpenForTesting
 data class UserResponse(
-    var id: String? = null,
+    var id: String? = "",
     var email: String? = null,
     var name: String? = null,
     var internetStatus: Int = -1,

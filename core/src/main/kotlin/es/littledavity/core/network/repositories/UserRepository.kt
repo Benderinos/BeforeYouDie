@@ -17,7 +17,7 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import javax.inject.Inject
-
+import javax.inject.Named
 
 /**
  * Repository module for handling user data from firebase.
@@ -25,11 +25,12 @@ import javax.inject.Inject
 @ExperimentalCoroutinesApi
 class UserRepository @Inject constructor(
     @VisibleForTesting(otherwise = PRIVATE)
-    var mDatabaseUsers: DatabaseReference
+    @Named("users")
+    internal val mDatabaseUsers: DatabaseReference,
+    internal val mUser: UserResponse
 ) {
 
-    suspend fun storeUser(user: FirebaseUser) : Flow<UserResponse> = callbackFlow {
-        val mUser = UserResponse()
+    suspend fun storeUser(user: FirebaseUser): Flow<UserResponse> = callbackFlow {
         mUser.id = user.uid
         mUser.email = user.email.toString()
         mUser.name = user.displayName.toString()
@@ -43,7 +44,6 @@ class UserRepository @Inject constructor(
 
     /**
      * Check if firebase user is logged or not
-     *
      */
     suspend fun checkUserLogin() = callbackFlow {
         val callback = object : ValueEventListener {
@@ -54,13 +54,12 @@ class UserRepository @Inject constructor(
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val user: UserResponse? = dataSnapshot.getValue(UserResponse::class.java)
                 if (user != null) {
-                    val mUserData = UserResponse()
-                    mUserData.id = user.id
-                    mUserData.email = user.email
-                    mUserData.name = user.name
-                    mUserData.loginStatus = user.loginStatus
-                    mUserData.avatar = user.avatar
-                    when (mUserData.loginStatus) {
+                    mUser.id = user.id
+                    mUser.email = user.email
+                    mUser.name = user.name
+                    mUser.loginStatus = user.loginStatus
+                    mUser.avatar = user.avatar
+                    when (mUser.loginStatus) {
                         LOGIN_IN -> {
                             offer(true)
                         }

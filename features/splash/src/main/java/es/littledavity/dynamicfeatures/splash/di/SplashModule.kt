@@ -10,6 +10,7 @@ import es.littledavity.commons.ui.extensions.viewModel
 import es.littledavity.core.network.repositories.UserRepository
 import es.littledavity.dynamicfeatures.splash.SplashViewModel
 import es.littledavity.dynamicfeatures.splash.model.UserMapper
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 /**
  * Class that contributes to the object graph [SplashComponent].
@@ -28,9 +29,12 @@ class SplashModule(
      * @return Instance of view model.
      * @see Provides
      */
+    @ExperimentalCoroutinesApi
     @Provides
     @FeatureScope
-    fun providesSplashViewModel(userRepository: UserRepository) = fragment.viewModel {
+    fun providesSplashViewModel(
+        userRepository: UserRepository
+    ) = fragment.viewModel {
         SplashViewModel(userRepository = userRepository)
     }
 

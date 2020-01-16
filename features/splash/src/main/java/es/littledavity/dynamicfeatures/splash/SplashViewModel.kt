@@ -7,6 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import es.littledavity.core.network.repositories.UserRepository
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -16,6 +18,7 @@ import javax.inject.Inject
  *
  * @see ViewModel
  */
+@ExperimentalCoroutinesApi
 class SplashViewModel @Inject constructor(
     @VisibleForTesting(otherwise = PRIVATE)
     val userRepository: UserRepository
@@ -34,7 +37,9 @@ class SplashViewModel @Inject constructor(
         viewModelScope.launch {
             userRepository.checkUserLogin()
                 .onStart { _state.postValue(SplashViewState.Loading) }
-                .onEach { ::userLogged }
+                .onEach {
+                    delay(1500)
+                    ::userLogged }
                 .catch { onError(it) }
                 .launchIn(viewModelScope)
         }

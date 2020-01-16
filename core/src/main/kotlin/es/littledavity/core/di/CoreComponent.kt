@@ -2,12 +2,13 @@ package es.littledavity.core.di
 
 import android.content.Context
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import dagger.Component
 import es.littledavity.core.di.modules.ContextModule
-import es.littledavity.core.di.modules.RepositoryModule
+import es.littledavity.core.di.modules.FirebaseDatabaseModule
 import es.littledavity.core.di.modules.UtilsModule
+import es.littledavity.core.network.responses.UserResponse
 import es.littledavity.core.utils.ThemeUtils
+import javax.inject.Named
 import javax.inject.Singleton
 
 /**
@@ -19,7 +20,7 @@ import javax.inject.Singleton
 @Component(modules = [
     ContextModule::class,
     UtilsModule::class,
-    RepositoryModule::class
+    FirebaseDatabaseModule::class
 ])
 interface CoreComponent {
 
@@ -40,14 +41,15 @@ interface CoreComponent {
     /**
      * Provide dependency graph user database reference
      *
-     * @return Context
+     * @return FirebaseReference
      */
-    fun database(): FirebaseDatabase
+    @Named("users")
+    fun userDatabase(): DatabaseReference
 
     /**
-     * Provide dependency graph user database reference
+     * Provide dependency graph user
      *
-     * @return Context
+     * @return UserResponse
      */
-    fun userDatabase(): DatabaseReference
+    fun user(): UserResponse
 }
