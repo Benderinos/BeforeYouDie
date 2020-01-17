@@ -58,7 +58,7 @@ class LoginViewModel @Inject constructor(
         val authIntent = AuthUI.getInstance()
             .createSignInIntentBuilder()
             .setAvailableProviders(providers)
-            .setIsSmartLockEnabled(true)
+            .setIsSmartLockEnabled(false)
             /*.setLogo(R.mipmap.ic_launcher) // Set logo drawable*/
             .setTheme(R.style.LoginTheme) // Set theme
             .build()
