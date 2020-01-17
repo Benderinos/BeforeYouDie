@@ -28,20 +28,15 @@ class SplashViewModel @Inject constructor(
     val state: LiveData<SplashViewState>
         get() = _state
 
-    init {
-        _state
-        checkUserLogin()
-    }
-
     fun checkUserLogin() {
         viewModelScope.launch {
             userRepository.checkUserLogin()
                 .onStart { _state.postValue(SplashViewState.Loading) }
                 .onEach {
-                    delay(1500)
-                    ::userLogged }
+                    delay(2000)
+                    userLogged(it) }
                 .catch { onError(it) }
-                .launchIn(viewModelScope)
+                .launchIn(this)
         }
     }
 

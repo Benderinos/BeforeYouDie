@@ -1,23 +1,21 @@
-package es.littledavity.dynamicfeatures.splash
+package es.littledavity.dynamicfeatures.login
 
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.fragment.findNavController
 import es.littledavity.beforeyoudie.BeforeYouDieApp
 import es.littledavity.commons.ui.base.BaseFragment
 import es.littledavity.commons.ui.extensions.observe
-import es.littledavity.dynamicfeatures.splash.databinding.FragmentSplashBinding
-import es.littledavity.dynamicfeatures.splash.di.DaggerSplashComponent
-import es.littledavity.dynamicfeatures.splash.di.SplashModule
-import timber.log.Timber
+import es.littledavity.dynamicfeatures.login.databinding.FragmentLoginBinding
+import es.littledavity.dynamicfeatures.login.di.DaggerLoginComponent
+import es.littledavity.dynamicfeatures.login.di.LoginModule
 
 /**
- * Splash check if login and navigate to login screen or home screen
+ * Login launch firebase auth ui for login
  *
  * @see BaseFragment
  */
-class SplashFragment : BaseFragment<FragmentSplashBinding, SplashViewModel>(
-    layoutId = R.layout.fragment_splash
+class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(
+    layoutId = R.layout.fragment_login
 ) {
 
     /**
@@ -37,10 +35,10 @@ class SplashFragment : BaseFragment<FragmentSplashBinding, SplashViewModel>(
      * Initialize dagger injection dependency graph.
      */
     override fun onInitDependencyInjection() {
-        DaggerSplashComponent
+        DaggerLoginComponent
             .builder()
             .coreComponent(BeforeYouDieApp.coreComponent(requireContext()))
-            .splashModule(SplashModule(this))
+            .loginModule(LoginModule(this))
             .build()
             .inject(this)
     }
@@ -49,28 +47,25 @@ class SplashFragment : BaseFragment<FragmentSplashBinding, SplashViewModel>(
      * Initialize view data binding variables.
      */
     override fun onInitDataBinding() {
-        viewModel.checkUserLogin()
         viewBinding.viewModel = viewModel
     }
 
     /**
-     * Observer view state change on [SplashViewState].
+     * Observer view state change on [LoginViewState].
      *
      * @param viewState State of splash fragment.
      */
-    private fun onViewStateChange(viewState: SplashViewState) {
-        when (viewState) {
+    private fun onViewStateChange(viewState: LoginViewState) {
+        /*when (viewState) {
             is SplashViewState.Loading ->
-                Timber.i("Splash Loading")
+                //Show Lottie loading
+                findNavController().navigate(R.id.action_splashFragment_to_home_fragment)
             is SplashViewState.Logged ->
-                Timber.i("User Logged, navigate to home")
-            is SplashViewState.NotLogged ->{
-                val action = SplashFragmentDirections.actionSplashFragmentToLoginFragment()
-                findNavController().navigate(action)
-            }
+                findNavController().navigate(R.id.action_splashFragment_to_home_fragment)
+            is SplashViewState.NotLogged ->
+                findNavController().navigate(R.id.action_splashFragment_to_login_fragment)
             is SplashViewState.Error ->
-                Timber.i("Error while check user login")
-        }
+                findNavController().navigate(R.id.action_splashFragment_to_login_fragment)
+        }*/
     }
-
 }
