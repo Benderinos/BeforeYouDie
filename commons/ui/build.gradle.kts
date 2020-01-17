@@ -18,7 +18,7 @@ dependencies {
     implementation(Dependencies.NAVIGATION_FRAGMENT)
     implementation(Dependencies.NAVIGATION_UI)
     implementation(Dependencies.PAGING)
-    implementation(Dependencies.COIL)
+//    implementation(Dependencies.COIL)
 
     kapt(AnnotationProcessorsDependencies.DATABINDING)
 }

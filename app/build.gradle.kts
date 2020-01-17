@@ -70,6 +70,11 @@ android {
         }
     }
 
+    dynamicFeatures = mutableSetOf(
+        BuildModules.Features.SPLASH,
+        BuildModules.Features.LOGIN
+    )
+
     buildFeatures{
         dataBinding = true
     }

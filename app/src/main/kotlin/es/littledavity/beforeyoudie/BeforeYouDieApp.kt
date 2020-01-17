@@ -6,7 +6,7 @@ import es.littledavity.beforeyoudie.di.DaggerAppComponent
 import es.littledavity.core.di.CoreComponent
 import es.littledavity.core.di.DaggerCoreComponent
 import es.littledavity.core.di.modules.ContextModule
-import io.fabric.sdk.android.Fabric
+import es.littledavity.core.utils.ThemeUtils
 import javax.inject.Inject
 import kotlin.random.Random
 import timber.log.Timber
@@ -14,6 +14,9 @@ import timber.log.Timber
 class BeforeYouDieApp : SplitCompatApplication() {
 
     lateinit var coreComponent: CoreComponent
+
+    @Inject
+    lateinit var themeUtils: ThemeUtils
 
     companion object {
 
@@ -79,7 +82,7 @@ class BeforeYouDieApp : SplitCompatApplication() {
      */
     private fun initRandomNightMode() {
         if (BuildConfig.DEBUG) {
-//            themeUtils.setNightMode(Random.nextBoolean())
+            themeUtils.setNightMode(Random.nextBoolean())
         }
     }
 }

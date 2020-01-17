@@ -1,4 +1,3 @@
-
 import dependencies.Dependencies
 import dependencies.AnnotationProcessorsDependencies
 import extensions.implementation
@@ -31,6 +30,9 @@ dependencies {
     implementation(Dependencies.MOSHI)
     implementation(Dependencies.MOSHI_KTX)
     implementation(Dependencies.CRASHLYTICS)
+    implementation(Dependencies.FIREBASE_AUTH_UI)
+    implementation(Dependencies.FIREBASE_AUTH)
+    implementation(Dependencies.FIREBASE_DATABASE)
 
     kapt(AnnotationProcessorsDependencies.DATABINDING)
     kapt(AnnotationProcessorsDependencies.ROOM)
