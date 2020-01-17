@@ -2,6 +2,7 @@ package es.littledavity.dynamicfeatures.splash
 
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import es.littledavity.beforeyoudie.BeforeYouDieApp
 import es.littledavity.commons.ui.base.BaseFragment
@@ -31,6 +32,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding, SplashViewModel>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observe(viewModel.state, ::onViewStateChange)
+        viewModel.checkUserLogin()
     }
 
     /**
@@ -49,8 +51,14 @@ class SplashFragment : BaseFragment<FragmentSplashBinding, SplashViewModel>(
      * Initialize view data binding variables.
      */
     override fun onInitDataBinding() {
-        viewModel.checkUserLogin()
         viewBinding.viewModel = viewModel
+    }
+
+    /**
+     * Remove observers
+     */
+    override fun onClear() {
+        viewModel.state.removeObservers(this)
     }
 
     /**
@@ -62,11 +70,13 @@ class SplashFragment : BaseFragment<FragmentSplashBinding, SplashViewModel>(
         when (viewState) {
             is SplashViewState.Loading ->
                 Timber.i("Splash Loading")
-            is SplashViewState.Logged ->
-                Timber.i("User Logged, navigate to home")
+            is SplashViewState.Logged ->{
+                val direction = SplashFragmentDirections.actionSplashFragmentToHomeFragment()
+                findNavController().navigate(direction)
+            }
             is SplashViewState.NotLogged ->{
-                val action = SplashFragmentDirections.actionSplashFragmentToLoginFragment()
-                findNavController().navigate(action)
+                val direction = SplashFragmentDirections.actionSplashFragmentToLoginFragment()
+                findNavController().navigate(direction)
             }
             is SplashViewState.Error ->
                 Timber.i("Error while check user login")

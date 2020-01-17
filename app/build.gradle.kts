@@ -72,7 +72,9 @@ android {
 
     dynamicFeatures = mutableSetOf(
         BuildModules.Features.SPLASH,
-        BuildModules.Features.LOGIN
+        BuildModules.Features.LOGIN,
+        BuildModules.Features.HOME
+
     )
 
     buildFeatures{

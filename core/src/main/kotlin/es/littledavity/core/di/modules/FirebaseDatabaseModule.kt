@@ -27,7 +27,7 @@ class FirebaseDatabaseModule {
     @Singleton
     @Provides
     fun provideFirebaseDatabase(): FirebaseDatabase = FirebaseDatabase.getInstance().apply {
-        setPersistenceEnabled(true) // enable offline conection
+        setPersistenceEnabled(false) // enable offline conection
 
     }
 
@@ -55,7 +55,7 @@ class FirebaseDatabaseModule {
         user: UserResponse
     ): DatabaseReference {
         return firebaseDatabase.getReference("users").child(user.id!!).apply {
-            keepSynced(true)
+            keepSynced(false)
         }
     }
 

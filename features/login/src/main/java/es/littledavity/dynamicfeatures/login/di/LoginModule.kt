@@ -33,9 +33,13 @@ class LoginModule(
     @Provides
     @FeatureScope
     fun providesLoginViewModel(
-        userRepository: UserRepository
+        userRepository: UserRepository,
+        userMapper: UserMapper
     ) = fragment.viewModel {
-        LoginViewModel(userRepository = userRepository)
+        LoginViewModel(
+            userRepository = userRepository,
+            userMapper = userMapper
+        )
     }
 
     /**

@@ -6,7 +6,8 @@ plugins {
 }
 
 dependencies {
+    implementation(project(BuildModules.Features.LOGIN))
+    implementation(project(BuildModules.Features.SPLASH))
+
     implementation(Dependencies.LOTTIE)
-    implementation(Dependencies.FIREBASE_AUTH)
-    implementation(Dependencies.FIREBASE_DATABASE)
 }

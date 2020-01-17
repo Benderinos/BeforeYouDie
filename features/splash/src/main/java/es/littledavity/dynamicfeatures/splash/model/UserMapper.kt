@@ -9,7 +9,7 @@ import es.littledavity.core.network.responses.UserResponse
  *
  * @see Mapper
  */
-class UserMapper : Mapper<BaseResponse<UserResponse>, User> {
+class UserMapper : Mapper<UserResponse, User> {
 
     /**
      * Transform firebase response to [User].
@@ -19,15 +19,14 @@ class UserMapper : Mapper<BaseResponse<UserResponse>, User> {
      * @throws NoSuchElementException If the response results are empty.
      */
     @Throws(NoSuchElementException::class)
-    override suspend fun map(from: BaseResponse<UserResponse>): User {
-        val userResponse = from.data.results.first()
+    override suspend fun map(from: UserResponse): User {
         return User(
-            id = userResponse.id,
-            email = userResponse.email,
-            name = userResponse.name,
-            internetStatus = userResponse.internetStatus,
-            loginStatus = userResponse.loginStatus,
-            avatar = userResponse.avatar
+            id = from.id,
+            email = from.email,
+            name = from.name,
+            internetStatus = from.internetStatus,
+            loginStatus = from.loginStatus,
+            avatar = from.avatar
         )
     }
 }

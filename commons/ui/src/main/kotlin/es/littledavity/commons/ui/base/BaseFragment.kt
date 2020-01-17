@@ -33,6 +33,11 @@ abstract class BaseFragment<B : ViewDataBinding, M : ViewModel>(
     abstract fun onInitDataBinding()
 
     /**
+     * Called when destroy view to clear observers and listeners.
+     */
+    abstract fun onClear()
+
+    /**
      * Called to have the fragment instantiate its user interface view.
      *
      * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
@@ -98,5 +103,10 @@ abstract class BaseFragment<B : ViewDataBinding, M : ViewModel>(
         } else {
             throw TypeCastException("Main activity should extend from 'AppCompatActivity'")
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        onClear()
     }
 }

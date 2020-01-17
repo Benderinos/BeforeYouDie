@@ -5,7 +5,7 @@ include(
     ":commons:ui",
     ":features:splash",
     ":features:login",
-    ":features:login"
+    ":features:home"
 )
 
 rootProject.buildFileName = "build.gradle.kts"
